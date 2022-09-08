@@ -1,10 +1,11 @@
-# Given two arrays of integers, find which elements in the second array are missing from the first array.
+#!/bin/python3
 
 import math
 import os
 import random
 import re
 import sys
+from collections import OrderedDict
 
 
 #
@@ -20,13 +21,18 @@ def missingNumbers(arr, brr):
     arr.sort()
     brr.sort()
     result = []
+    unique_result = []
+
     for i in brr:
         if i not in arr:
             result.append(i)
         else:
             arr.remove(i)
 
-    return result
+    for x in result:
+        if x not in unique_result:
+            unique_result.append(x)
+    return unique_result
 
 
 if __name__ == '__main__':
@@ -46,4 +52,3 @@ if __name__ == '__main__':
     fptr.write('\n')
 
     fptr.close()
-
